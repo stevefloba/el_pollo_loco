@@ -1,22 +1,6 @@
 class World {
     character = new Character();
-    enemies = [
-        new Chicken(),
-        new Chicken(),
-        new Chicken()
-    ];
-
-    clouds = [
-        new Cloud()
-    ];
-
-    backgroundObjects = [
-        new BackgroundObject('../img/5_background/layers/air.png', 0),
-        new BackgroundObject('../img/5_background/layers/3_third_layer/1.png', 0),
-        new BackgroundObject('../img/5_background/layers/2_second_layer/1.png', 0),
-        new BackgroundObject('../img/5_background/layers/1_first_layer/1.png', 0)
-    ];
-
+    level = level1;
     canvas;
     ctx;
     keyboard;
@@ -40,13 +24,13 @@ class World {
 
         this.ctx.translate(this.camera_x, 0);
 
-        this.addObjectsToMap(this.backgroundObjects);
+        this.addObjectsToMap(this.level.backgroundObjects);
 
         this.addToMap(this.character);
-        this.addObjectsToMap(this.clouds);
-        this.addObjectsToMap(this.enemies);
+        this.addObjectsToMap(this.level.clouds);
+        this.addObjectsToMap(this.level.enemies);
 
-         this.ctx.translate(-this.camera_x, 0);
+        this.ctx.translate(-this.camera_x, 0);
 
         // Draw() wird immer wieder aufgerufen
         let self = this; // in diesem speziellen Fall funktioniert this. nicht. Daher eine Variable damit zuordnen.
@@ -62,7 +46,7 @@ class World {
     }
 
     addToMap(mo) {
-        if(mo.otherDirection) {
+        if (mo.otherDirection) {
             this.ctx.save();
             this.ctx.translate(mo.width, 0);
             this.ctx.scale(-1, 1);
