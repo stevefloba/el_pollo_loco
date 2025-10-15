@@ -3,11 +3,26 @@ class MovableObject {
     y = 280;
     img;
     height = 150;
-    width = 100;
+    width = 150;
     imageCache = {};
     currentImage = 0;
     speed = 0.1;
     otherDirection = false;
+    speedY = 0;
+    acceleration = 2.5;
+
+    applyGravity() {
+        setInterval(() => {
+            if (this.isAboveGround()) {
+                this.y -= this.speedY
+                this.speedY -= this.acceleration;
+            }
+        }, 1000 / 25);
+    }
+
+    isAboveGround() {
+        return this.y < 143;
+    }
 
     // loadImage('img/test.png);
     loadImage(path) {

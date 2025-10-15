@@ -1,7 +1,7 @@
 class Character extends MovableObject {
 
     height = 280;
-    y = 155;
+    y = 50; //155;
     speed = 5;
     IMAGES_WALKING = [
         '../img/2_character_pepe/2_walk/W-21.png',
@@ -17,7 +17,7 @@ class Character extends MovableObject {
     constructor() {
         super().loadImage('../img/2_character_pepe/2_walk/W-21.png');
         this.loadImages(this.IMAGES_WALKING);
-
+        this.applyGravity();
         this.animate();
     }
 
@@ -41,7 +41,7 @@ class Character extends MovableObject {
 
             if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                 // Walk animation
-this.playAnimation(this.IMAGES_WALKING);
+                this.playAnimation(this.IMAGES_WALKING);
             }
         }, 50);
     }
