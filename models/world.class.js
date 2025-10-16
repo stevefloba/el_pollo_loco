@@ -49,6 +49,18 @@ class World {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         this.ctx.translate(this.camera_x, 0);
+
+// 🌥 Wolken bewegen:
+    this.level.clouds.forEach(cloud => {
+        cloud.moveLeft();
+        if (cloud.x < -cloud.width) {
+            cloud.x = 2000 + Math.random() * 500;
+        }
+    });
+
+
+
+
         this.addObjectsToMap(this.level.backgroundObjects);
 
         this.ctx.translate(-this.camera_x, 0); // Back
