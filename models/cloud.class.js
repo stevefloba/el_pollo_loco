@@ -34,6 +34,7 @@ class Cloud extends MovableObject {
 
         // Zufällige Startposition
         this.x = Math.random() * 3000;
+        this.y = 10 + Math.random() * 110;
 
         this.speed = 0.01;
 
